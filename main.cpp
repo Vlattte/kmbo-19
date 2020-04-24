@@ -1,25 +1,23 @@
 #include <iostream>
-#include <LinkedList.h>
+#include "LinkedList.h"
 
 using namespace std;
 
 int main()
 {
-	LinkedList l;
-	l.pushBack(1);
-	l.pushFront(0);
-	l.pushBack(2);
+	LinkedList copyList;
+	copyList.insert(0, 1);
+	copyList.insert(0, 2);
 
-	cout << "Stage 1: "; l.write(); cout << endl;
+	LinkedList list;
+	list.insert(0, 5);
 
-	l.insert(1, 10);
-	cout << "Stage 2: "; l.write(); cout << endl;
+	list = std::move(copyList); //здесь из списка copyList все узлы переносятся в list, при чем переносятся с удалением их из copyList
 
-	l.erase(1);
-	cout << "Stage 2: "; l.write(); cout << endl;
+	for (size_t i = 0; i < copyList.size() - 1; i++)
+		cout << "Старый список" << copyList[i] << endl;
 
-	l.reverse();
-	cout << "Stage 3: "; l.write(); cout << endl;
-
-	return 0;
+	for (size_t i = 0; i < list.size() - 1; i++)
+		cout << "Новый список" << list[i] << endl;
 }
+
