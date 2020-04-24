@@ -1,6 +1,6 @@
-OBJS=llist.o main.o
+OBJS=LinkedList.o main.o
 
-llist: $(OBJS)
+LinkedList: $(OBJS)
 		g++ -g -o $@ $^
 
 .cpp.o:
@@ -8,4 +8,4 @@ llist: $(OBJS)
 
 
 clean:
-		rm -f *.o llist
+		rm -f *.o LinkedList
