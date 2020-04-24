@@ -74,6 +74,7 @@ LinkedList& LinkedList::operator=(const LinkedList& copyList)
 	return *this;
 }
 
+#if ENABLE_MOVE_SEMANTIC
 LinkedList::LinkedList(LinkedList && moveList) noexcept
 {
 	this->_size = moveList._size;
@@ -100,6 +101,7 @@ LinkedList& LinkedList::operator=(LinkedList && movelist) noexcept
 
 	return *this; //возвращаем себя скопированного
 }
+#endif 
 
 LinkedList::~LinkedList()
 {
