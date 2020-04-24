@@ -1,30 +1,25 @@
 #include <iostream>
-#include <llist.h>
+#include <LinkedList.h>
 
 using namespace std;
 
-void dump(const LList& l)
-{
-	for(size_t i = 0; i < l.size(); ++i, cout << " ") cout << l[i];
-}
-
 int main()
 {
-	LList l;
-	l.push_back(1);
-	l.push_front(0);
-	l.push_back(2);
+	LinkedList l;
+	l.pushBack(1);
+	l.pushFront(0);
+	l.pushBack(2);
 
-	cout << "Stage 1: "; dump(l); cout << endl;
+	cout << "Stage 1: "; l.write(); cout << endl;
 
-	l.insert_at(1, 10);
-	cout << "Stage 2: "; dump(l); cout << endl;
+	l.insert(1, 10);
+	cout << "Stage 2: "; l.write(); cout << endl;
 
-	l.erase_at(1);
-	cout << "Stage 2: "; dump(l); cout << endl;
+	l.erase(1);
+	cout << "Stage 2: "; l.write(); cout << endl;
 
 	l.reverse();
-	cout << "Stage 3: "; dump(l); cout << endl;
+	cout << "Stage 3: "; l.write(); cout << endl;
 
 	return 0;
 }
