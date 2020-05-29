@@ -125,7 +125,7 @@ LinkedList::Node* LinkedList::getNode(const size_t pos) const
 	}
 
 	Node* bufNode = this->_head; // создаем буфер для хранения головного узла
-	for (int i = 0; i < pos; i++)
+	for (size_t i = 0; i < pos; i++)
 	{
 		bufNode = bufNode->next; //перебираем элементы до нужного
 	}
@@ -236,6 +236,7 @@ long long int LinkedList::findIndex(const ValueType& value) const
 		++i;
 	}
 	std::cout << "There is no such value, so get an enormous index not from the list: ";
+	return -1;
 }
 
  LinkedList::Node* LinkedList::findNode(const ValueType & value) const
@@ -289,27 +290,20 @@ size_t LinkedList::size() const
 
 void LinkedList::forceNodeDelete(Node* node)
 {
-	if (node == nullptr)
+	node = this->_head;
+	while (node != nullptr)
 	{
-		return; // если конец списка 
+		node->removeNext();
 	}
-
-	// удаляем всех впереди, пока не встретим nullptr
-	Node* nextDeleteNode = node->next; 
-	delete node;
-	forceNodeDelete(nextDeleteNode);
 }
 
 void LinkedList::write() const
 {
 	Node* bufNode = this->_head;
-	for (size_t i = 0; i < _size; ++i)
+	while (bufNode)
 	{
 		std::cout << bufNode->value << "<>";
 		bufNode = bufNode->next;
 	}
-	std::cout << "NULL";
-	std::cout << std::endl;
-	delete[] bufNode;
-	bufNode = NULL;
+	std::cout << "NULL" << std::endl;
 }
